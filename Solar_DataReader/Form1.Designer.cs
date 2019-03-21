@@ -79,7 +79,7 @@
             // changeTokenToolStripMenuItem
             // 
             this.changeTokenToolStripMenuItem.Name = "changeTokenToolStripMenuItem";
-            this.changeTokenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changeTokenToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.changeTokenToolStripMenuItem.Text = "Change Token";
             this.changeTokenToolStripMenuItem.Click += new System.EventHandler(this.changeTokenToolStripMenuItem_Click);
             // 
@@ -94,6 +94,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

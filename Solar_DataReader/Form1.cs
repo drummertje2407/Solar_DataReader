@@ -12,28 +12,37 @@ namespace Solar_DataReader
 {
     public partial class Form1 : Form
     {
-        DiscordSocketClient Client;
+        
         public static Form1 instance;
+
+        private DiscordBot bot;
 
         public Form1()
         {
             InitializeComponent();
             instance = this;
         }
+
         public void Log(string msg)
         {
-            Console_output.AppendText(msg + Environment.NewLine);
+            Console_output.Invoke(new Action(() => Console_output.AppendText(msg + Environment.NewLine))); 
+            //some stackoverflow magic that prevend error, something to do with different threads.
+            //https://www.codeproject.com/Questions/1007873/How-to-remove-System-InvalidOperationException
         }
 
-        private async void Btn_Connect_Click(object sender, EventArgs e)
+        private void Btn_Connect_Click(object sender, EventArgs e)
         {
-            
+
+            bot = new DiscordBot();
+
             string Token = "";
             try
             {
                 #region GetToken
 
-                using (var Stream = new FileStream(@"C:\Windows\Temp\SolarData\Token.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                var FileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Solardata"); //get apdata path
+                Directory.CreateDirectory(FileName);                                                                  //if directory already exists, the line will be ignored.
+                using (var Stream = new FileStream(Path.Combine(FileName,"Token.txt"), FileMode.OpenOrCreate, FileAccess.ReadWrite))
                 using (var Readtoken = new StreamReader(Stream))
                 {
                     Token = Readtoken.ReadToEnd();
@@ -47,7 +56,7 @@ namespace Solar_DataReader
 
             try
             {
-                
+                bot.Run(Token);
             }
             catch (Exception ex) { MessageBox.Show("Error: Cannot connect your Bot to the internet \r\n" + ex.Message.ToString(), "ERROR"); return; }
 
@@ -60,8 +69,11 @@ namespace Solar_DataReader
 
         private void changeTokenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string Token =  Interaction.InputBox("Type in your token: ", "Input", "Default Text");
-            try { File.WriteAllText(@"C:\Windows\Temp\SolarData\Token.txt", Token); }
+            string Token =  Interaction.InputBox("Type in your token: ", "Input");                                          //ask for new token
+            var FileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Solardata"); //get apdata path
+            Directory.CreateDirectory(FileName);                                                                            //if directory already exists, the line will be ignored.
+
+            try { File.WriteAllText(Path.Combine(FileName,"Token.txt"), Token); }                                           //update or create Token.txt
             catch (UnauthorizedAccessException ex) { MessageBox.Show("Error: Cannot acces the Token file \r\n" + ex.Message.ToString(), "ERROR"); return; }
             catch(Exception ex) { MessageBox.Show("Error: " + ex.Message.ToString(), "ERROR"); return; }
             

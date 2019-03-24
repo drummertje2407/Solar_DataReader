@@ -38,9 +38,9 @@
             // 
             // Btn_Connect
             // 
-            this.Btn_Connect.Location = new System.Drawing.Point(313, 368);
+            this.Btn_Connect.Location = new System.Drawing.Point(0, 412);
             this.Btn_Connect.Name = "Btn_Connect";
-            this.Btn_Connect.Size = new System.Drawing.Size(121, 38);
+            this.Btn_Connect.Size = new System.Drawing.Size(149, 38);
             this.Btn_Connect.TabIndex = 0;
             this.Btn_Connect.Text = "Connect";
             this.Btn_Connect.UseVisualStyleBackColor = true;
@@ -51,10 +51,10 @@
             this.Console_output.BackColor = System.Drawing.Color.Black;
             this.Console_output.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Console_output.ForeColor = System.Drawing.Color.Green;
-            this.Console_output.Location = new System.Drawing.Point(163, 114);
+            this.Console_output.Location = new System.Drawing.Point(0, 27);
             this.Console_output.Name = "Console_output";
             this.Console_output.ReadOnly = true;
-            this.Console_output.Size = new System.Drawing.Size(489, 185);
+            this.Console_output.Size = new System.Drawing.Size(149, 389);
             this.Console_output.TabIndex = 1;
             this.Console_output.Text = "";
             // 
@@ -79,7 +79,7 @@
             // changeTokenToolStripMenuItem
             // 
             this.changeTokenToolStripMenuItem.Name = "changeTokenToolStripMenuItem";
-            this.changeTokenToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.changeTokenToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.changeTokenToolStripMenuItem.Text = "Change Token";
             this.changeTokenToolStripMenuItem.Click += new System.EventHandler(this.changeTokenToolStripMenuItem_Click);
             // 

@@ -19,7 +19,7 @@ namespace Solar_DataReader
         private CommandService commands;
         private IServiceProvider services;
 
-        public async Task Run(string token)
+        public async void Run(string token)
         {
             client = new DiscordSocketClient();
             commands = new CommandService();
@@ -30,6 +30,7 @@ namespace Solar_DataReader
                 .BuildServiceProvider();
 
             client.Log += Log;
+
             await RegisterCommands();
             await client.LoginAsync(TokenType.Bot,token);
             await client.StartAsync();
@@ -48,7 +49,8 @@ namespace Solar_DataReader
             if (message == null || message.Author.IsBot) return;
 
             int argPos = 0;
-            if(message.HasStringPrefix(".", ref argPos) || message.HasMentionPrefix(client.CurrentUser, ref argPos))
+            string prefix = "^";
+            if(message.HasStringPrefix(prefix, ref argPos) || message.HasMentionPrefix(client.CurrentUser, ref argPos))
             {
                 SocketCommandContext context = new SocketCommandContext(client, message);
                 IResult result = await commands.ExecuteAsync(context, argPos, services);
@@ -61,7 +63,7 @@ namespace Solar_DataReader
         public async Task RegisterCommands()
         {
             client.MessageReceived += HandleCommands;
-            await commands.AddModuleAsync(Assembly.GetEntryAssembly(), services);
+            await commands.AddModulesAsync(Assembly.GetEntryAssembly(), services);
         }
     }
 }

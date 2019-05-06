@@ -21,9 +21,10 @@ namespace Solar_DataReader
         }
 
         [Command("datasend")]
-        public async Task Datasend(string Speed, string coordinates, string V1, string V2, string I1, string I2, string BP)
+        public async Task Datasend(string Data)
         {
-
+            DataModel model = new DataModel();
+            model.ProcessData(Data);
         }
     }
 }

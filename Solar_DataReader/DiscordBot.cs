@@ -46,12 +46,13 @@ namespace Solar_DataReader
         private async Task HandleCommands(SocketMessage msg)
         {
             SocketUserMessage message = msg as SocketUserMessage;
-            if (message == null || message.Author.IsBot) return;
+            if (message == null) return;
 
             int argPos = 0;
             string prefix = "^";
             if(message.HasStringPrefix(prefix, ref argPos) || message.HasMentionPrefix(client.CurrentUser, ref argPos))
             {
+                
                 SocketCommandContext context = new SocketCommandContext(client, message);
                 IResult result = await commands.ExecuteAsync(context, argPos, services);
 

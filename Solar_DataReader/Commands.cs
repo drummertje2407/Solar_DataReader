@@ -9,6 +9,7 @@ namespace Solar_DataReader
 {
    public class Commands : ModuleBase
     {
+        DataHandler model = new DataHandler();
         [Command("Ping")]
         public async Task Ping()
         {
@@ -20,10 +21,10 @@ namespace Solar_DataReader
 
         }
 
-        [Command("datasend")]
+        [Command("Datasend")]
         public async Task Datasend(string Data)
         {
-            DataModel model = new DataModel();
+            
             model.ProcessData(Data);
         }
     }

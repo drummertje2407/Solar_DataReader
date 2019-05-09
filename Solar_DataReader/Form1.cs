@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 using System.Windows.Media;
 
+using CsvHelper;
+
 using LiveCharts;
 using LiveCharts.Wpf;
 using LiveCharts.WinForms;
 
 using Discord;
 using Discord.WebSocket;
+using System.Collections.Generic;
 
 namespace Solar_DataReader
 {
@@ -20,33 +23,12 @@ namespace Solar_DataReader
       
         public static Form1 instance;
         public Timer Timer { get; set; }
+        public Timer Timer2;
+        public DataHolder Dataset = new DataHolder();
 
         private DiscordBot bot;
 
-        public float Time { get; set; }
-        public double Speed { get; set; }
-        public double Lontitude { get; set; }
-        public double Latitude { get; set; }
-        public bool GPS_fix { get; set; }
-        public int GPS_Quality { get; set; }
-
-        public double P_PV { get; set; }
-        public double P_Motor { get; set; }
-        public double P_Res { get; set; }
-
-        public double U_MPPT_PV_1 { get; set; }
-        public double I_MPPT_PV_1 { get; set; }
-        public double U_MPPT_1 { get; set; }
-        public double I_MPPT_1 { get; set; }
-        public int ERR_MPPT_1 { get; set; }
-
-        public double U_PV_2 { get; set; }
-        public double I_PV_2 { get; set; }
-        public double U_MPPT_2 { get; set; }
-        public double I_MPPT_2 { get; set; }
-        public int ERR_MPPT_2 { get; set; }
-
-        public double SOC { get; set; }
+        public List<DataHolder> Records = new List<DataHolder>();
 
 
         public Form1()
@@ -64,8 +46,8 @@ namespace Solar_DataReader
             solidGaugeP_motor.Uses360Mode = false;
             solidGaugeP_motor.From = 0;
             solidGaugeP_motor.To = 100;
-            solidGaugeP_solar.FromColor = Colors.Red;
-            solidGaugeP_solar.ToColor = Colors.Green;
+            solidGaugeP_motor.FromColor = Colors.Green;
+            solidGaugeP_motor.ToColor = Colors.Red;
 
             solidGaugeSpeed.Uses360Mode = false;
             solidGaugeSpeed.From = 0;
@@ -76,13 +58,45 @@ namespace Solar_DataReader
             solidGaugeSOC.From = 0;
             solidGaugeSOC.To = 100;
             solidGaugeSOC.Text = "SOC%";
+            
+
+            solidGauge_I_BAT.Uses360Mode = false;
+            solidGauge_I_BAT.From = 0;
+            solidGauge_I_BAT.To = 150;
+
+            solidGauge_MPPT1_I.Uses360Mode = false;
+            solidGauge_MPPT1_I.From = 0;
+            solidGauge_MPPT1_I.To = 50;
+
+            solidGauge_MPPT1_U.Uses360Mode = false;
+            solidGauge_MPPT1_U.From = 0;
+            solidGauge_MPPT1_U.To = 60;
+
+            solidGauge_MPPT2_I.Uses360Mode = false;
+            solidGauge_MPPT2_I.From = 0;
+            solidGauge_MPPT2_I.To = 50;
+
+            solidGauge_MPPT2_U.Uses360Mode = false;
+            solidGauge_MPPT2_U.From = 0;
+            solidGauge_MPPT2_U.To = 60;
             #endregion
 
             Timer = new Timer{Interval = 10};
             Timer.Tick += Update_GUI;
             Timer.Start();
+
+            Timer2 = new Timer { Interval = 1000 };
+            Timer2.Tick += Savedata;
+            Timer2.Start();
         }
-        
+
+        private void Savedata(object sender, EventArgs e)
+        {
+            if (Dataset != null)
+            {
+                Records.Add(Dataset);
+            }
+        }
 
         public void Log(string msg)
         {
@@ -122,6 +136,9 @@ namespace Solar_DataReader
 
         private void Update_GUI(object sender, EventArgs e)
         {
+            solidGaugeP_motor.Value = Dataset.P_Motor;
+            solidGaugeSpeed.Value = Dataset.Speed;
+            solidGaugeSOC.Value = Dataset.SOC;
             
         }
         
@@ -136,6 +153,21 @@ namespace Solar_DataReader
             catch (UnauthorizedAccessException ex) { MessageBox.Show("Error: Cannot acces the Token file \r\n" + ex.Message.ToString(), "ERROR"); return; }
             catch(Exception ex) { MessageBox.Show("Error: " + ex.Message.ToString(), "ERROR"); return; }
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (var writer = new StreamWriter(@"C:\Users\Fynn\Documents\Young Solar Challenge\text.csv"))
+            using (var csvWriter = new CsvWriter(writer))
+            {
+                if (Records != null)
+                {
+                    csvWriter.WriteRecords(Records);
+                }
+                
+
+            }
+            MessageBox.Show("done");
         }
 
         

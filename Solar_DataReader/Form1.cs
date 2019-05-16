@@ -40,12 +40,11 @@ namespace Solar_DataReader
             solidGaugeP_solar.Uses360Mode = false;
             solidGaugeP_solar.From = 0;
             solidGaugeP_solar.To = 100;
-            solidGaugeP_solar.FromColor = Colors.Red;
-            solidGaugeP_solar.ToColor = Colors.Green;
+
 
             solidGaugeP_motor.Uses360Mode = false;
             solidGaugeP_motor.From = 0;
-            solidGaugeP_motor.To = 100;
+            solidGaugeP_motor.To = -100;
             solidGaugeP_motor.FromColor = Colors.Green;
             solidGaugeP_motor.ToColor = Colors.Red;
 

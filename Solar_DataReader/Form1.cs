@@ -136,9 +136,15 @@ namespace Solar_DataReader
 
         private void Update_GUI(object sender, EventArgs e)
         {
-            solidGaugeP_motor.Value = Dataset.P_Motor;
+            solidGaugeP_motor.Value = Dataset.P_motor;
             solidGaugeSpeed.Value = Dataset.Speed;
             solidGaugeSOC.Value = Dataset.SOC;
+            solidGaugeP_solar.Value = Dataset.P_PV;
+            solidGauge_MPPT1_I.Value = Dataset.I_MPPT_1;
+            solidGauge_MPPT1_U.Value = Dataset.U_MPPT_1;
+            solidGauge_MPPT2_I.Value = Dataset.I_MPPT_2;
+            solidGauge_MPPT2_U.Value = Dataset.U_MPPT_2;
+            solidGauge_I_BAT.Value = Dataset.I_res;
             
         }
         
@@ -157,7 +163,7 @@ namespace Solar_DataReader
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (var writer = new StreamWriter(@"C:\Users\Fynn\Documents\Young Solar Challenge\text.csv"))
+            using (var writer = new StreamWriter(@"C:\Users\Jelte\Documents\data.csv"))
             using (var csvWriter = new CsvWriter(writer))
             {
                 if (Records != null)

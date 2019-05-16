@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Solar_DataReader
 {
-    
+
     public class DataHolder
     {
         public float Time { get; set; }
@@ -30,8 +30,19 @@ namespace Solar_DataReader
                 this.p_pv = value;
             }
         }
-        public double P_Motor { get; set; }
-        public double P_Res { get; set; }
+        double p_motor;
+        public double P_motor
+        {
+            get
+            {
+                return P_Res - P_PV;
+            }
+            set
+            {
+                this.p_motor = value;
+            }        
+        }
+       public double P_Res { get; set; }
 
         public double P_PV_1 { get; set; }
         public double U_MPPT_PV_1 { get; set; }

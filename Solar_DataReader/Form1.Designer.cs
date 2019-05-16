@@ -43,18 +43,18 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.solidGauge_MPPT2_U = new LiveCharts.WinForms.SolidGauge();
             this.solidGauge_MPPT1_U = new LiveCharts.WinForms.SolidGauge();
+            this.solidGauge_I_BAT = new LiveCharts.WinForms.SolidGauge();
             this.solidGauge_MPPT2_I = new LiveCharts.WinForms.SolidGauge();
             this.solidGauge_MPPT1_I = new LiveCharts.WinForms.SolidGauge();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label8 = new System.Windows.Forms.Label();
-            this.solidGauge_I_BAT = new LiveCharts.WinForms.SolidGauge();
-            this.label9 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -141,7 +141,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(284, 545);
+            this.button1.Location = new System.Drawing.Point(266, 525);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 7;
@@ -214,6 +214,15 @@
             this.label7.TabIndex = 5;
             this.label7.Text = "U solarpanel 2 (V)";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(583, 97);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(61, 13);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "I battery (A)";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -222,6 +231,15 @@
             this.label6.Size = new System.Drawing.Size(86, 13);
             this.label6.TabIndex = 5;
             this.label6.Text = "I solarpanel 2 (A)";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(297, 204);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(91, 13);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "U solarpanel 1 (V)";
             // 
             // label5
             // 
@@ -266,6 +284,14 @@
             this.solidGauge_MPPT1_U.TabIndex = 3;
             this.solidGauge_MPPT1_U.Text = "solidGauge1";
             // 
+            // solidGauge_I_BAT
+            // 
+            this.solidGauge_I_BAT.Location = new System.Drawing.Point(546, 6);
+            this.solidGauge_I_BAT.Name = "solidGauge_I_BAT";
+            this.solidGauge_I_BAT.Size = new System.Drawing.Size(129, 88);
+            this.solidGauge_I_BAT.TabIndex = 3;
+            this.solidGauge_I_BAT.Text = "solidGauge1";
+            // 
             // solidGauge_MPPT2_I
             // 
             this.solidGauge_MPPT2_I.Location = new System.Drawing.Point(411, 6);
@@ -291,32 +317,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(297, 204);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(91, 13);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "U solarpanel 1 (V)";
-            // 
-            // solidGauge_I_BAT
-            // 
-            this.solidGauge_I_BAT.Location = new System.Drawing.Point(546, 6);
-            this.solidGauge_I_BAT.Name = "solidGauge_I_BAT";
-            this.solidGauge_I_BAT.Size = new System.Drawing.Size(129, 88);
-            this.solidGauge_I_BAT.TabIndex = 3;
-            this.solidGauge_I_BAT.Text = "solidGauge1";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(583, 97);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(61, 13);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "I battery (A)";
             // 
             // Form1
             // 

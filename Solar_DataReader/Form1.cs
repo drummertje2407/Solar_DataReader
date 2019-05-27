@@ -91,10 +91,26 @@ namespace Solar_DataReader
 
         private void Savedata(object sender, EventArgs e)
         {
-            if (Dataset != null)
+            if (checkBox2.Checked)
             {
-                Records.Add(Dataset);
+                if (Dataset != null)
+                {
+                    try
+                    {
+                        #region Savedata
+                        using (var writer = new StreamWriter(@"C:\Users\Jelte\Documents\data.csv"))
+                        using (var csvWriter = new CsvWriter(writer))
+                        {
+                            csvWriter.WriteRecord(Dataset);
+                        }
+                        #endregion
+                    }
+                    catch (Exception ex) { MessageBox.Show("Error: Cannot acces data.txt \r\n" + ex.Message.ToString(), "ERROR"); return; }
+
+
+                }
             }
+           
         }
 
         public void Log(string msg)
@@ -144,6 +160,11 @@ namespace Solar_DataReader
             solidGauge_MPPT2_I.Value = Dataset.I_MPPT_2;
             solidGauge_MPPT2_U.Value = Dataset.U_MPPT_2;
             solidGauge_I_BAT.Value = Dataset.I_res;
+
+            if (Dataset.GPS_fix)
+                pictureBox1.Image = Solar_DataReader.Properties.Resources.Trafficlight_green_icon;
+            else
+                pictureBox1.Image = Solar_DataReader.Properties.Resources.Erroricon404;
             
         }
         
@@ -162,17 +183,7 @@ namespace Solar_DataReader
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (var writer = new StreamWriter(@"C:\Users\Jelte\Documents\data.csv"))
-            using (var csvWriter = new CsvWriter(writer))
-            {
-                if (Records != null)
-                {
-                    csvWriter.WriteRecords(Records);
-                }
-                
-
-            }
-            MessageBox.Show("done");
+            
         }
 
         

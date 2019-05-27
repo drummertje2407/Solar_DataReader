@@ -55,9 +55,14 @@
             this.solidGauge_MPPT2_I = new LiveCharts.WinForms.SolidGauge();
             this.solidGauge_MPPT1_I = new LiveCharts.WinForms.SolidGauge();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.dataLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Btn_Connect
@@ -95,7 +100,8 @@
             // configToolStripMenuItem
             // 
             this.configToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.changeTokenToolStripMenuItem});
+            this.changeTokenToolStripMenuItem,
+            this.dataLocationToolStripMenuItem});
             this.configToolStripMenuItem.Name = "configToolStripMenuItem";
             this.configToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.configToolStripMenuItem.Text = "Config";
@@ -318,12 +324,50 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Solar_DataReader.Properties.Resources.Erroricon404;
+            this.pictureBox1.Location = new System.Drawing.Point(154, 527);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(23, 21);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(183, 535);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 13);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "GPS lock";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(155, 504);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(72, 17);
+            this.checkBox2.TabIndex = 12;
+            this.checkBox2.Text = "Savedata";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // dataLocationToolStripMenuItem
+            // 
+            this.dataLocationToolStripMenuItem.Name = "dataLocationToolStripMenuItem";
+            this.dataLocationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dataLocationToolStripMenuItem.Text = "Data Location";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(1114, 568);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -341,6 +385,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -375,6 +420,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private LiveCharts.WinForms.SolidGauge solidGauge_I_BAT;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ToolStripMenuItem dataLocationToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 

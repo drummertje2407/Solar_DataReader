@@ -25,6 +25,12 @@ namespace Solar_DataReader
                 switch (SingleDataBlock[0])
                 {
                     case "gpsfix":
+                        try
+                        {
+                            if (double.Parse(SingleDataBlock[1]) > 0)
+                            { Form1.instance.Dataset.GPS_fix = true; }
+                        }
+                        catch (Exception) { }
                         break;
 
                     case "lon":
@@ -38,7 +44,7 @@ namespace Solar_DataReader
                         break;
 
                     case "speed":
-                        try { Form1.instance.Dataset.Speed = double.Parse(SingleDataBlock[1]) / 3.6; }
+                        try { Form1.instance.Dataset.Speed = Math.Round(double.Parse(SingleDataBlock[1]) / 3.6); }
                         catch (Exception) { }
                         break;
                         

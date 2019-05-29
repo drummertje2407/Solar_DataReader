@@ -95,20 +95,32 @@ namespace Solar_DataReader
             {
                 if (Dataset != null)
                 {
+                    #region Savedata
+                    using (var writer = new StreamWriter(@"C:\Users\Jelte\Documents\data.csv"))
+                    using (var csvWriter = new CsvWriter(writer))
+                    {
+                        csvWriter.WriteField(Dataset);
+                    }
+                    #endregion
+                }
+                else
+                {
                     try
                     {
                         #region Savedata
                         using (var writer = new StreamWriter(@"C:\Users\Jelte\Documents\data.csv"))
                         using (var csvWriter = new CsvWriter(writer))
                         {
-                            csvWriter.WriteRecord(Dataset);
+                            csvWriter.WriteRecords(Records);
                         }
                         #endregion
                     }
                     catch (Exception ex) { MessageBox.Show("Error: Cannot acces data.txt \r\n" + ex.Message.ToString(), "ERROR"); return; }
-
-
                 }
+                
+
+
+                
             }
            
         }

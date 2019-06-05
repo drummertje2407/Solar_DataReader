@@ -44,12 +44,13 @@ namespace Solar_DataReader
                         break;
 
                     case "speed":
-                        try { Form1.instance.Dataset.Speed = double.Parse(SingleDataBlock[1]) / 3.6; }
+                        try
+                        { Form1.instance.Dataset.Speed = double.Parse(string.Format("{0:F2}", SingleDataBlock[1])); }
                         catch (Exception) { }
                         break;
                         
                     case "mppt1_v":
-                        try { Form1.instance.Dataset.U_MPPT_1 = double.Parse(SingleDataBlock[1])/1000; }
+                        try { Form1.instance.Dataset.U_MPPT_1 = double.Parse(SingleDataBlock[1])/10000; }
                         catch (Exception) { }
                         break;
 
@@ -74,7 +75,7 @@ namespace Solar_DataReader
                         break;
 
                     case "mppt2_v":
-                        try { Form1.instance.Dataset.U_MPPT_2 = double.Parse(SingleDataBlock[1]) / 1000; }
+                        try { Form1.instance.Dataset.U_MPPT_2 = double.Parse(SingleDataBlock[1]) / 10000; }
                         catch (Exception) { }
                         break;
 
@@ -103,7 +104,7 @@ namespace Solar_DataReader
                         catch (Exception) { }
                         break;
                     case "bmv_soc":
-                        try { Form1.instance.Dataset.SOC = Math.Round(double.Parse(SingleDataBlock[1])/10); }
+                        try { Form1.instance.Dataset.SOC = Math.Round(double.Parse(SingleDataBlock[1])/100); }
                         catch (Exception) { }
                         break;
 
@@ -113,12 +114,12 @@ namespace Solar_DataReader
                         break;
 
                     case "bmv_i":
-                        try { Form1.instance.Dataset.U_BAT = Math.Round(double.Parse(SingleDataBlock[1]) / 1000); }
+                        try { Form1.instance.Dataset.I_res = Math.Round(double.Parse(SingleDataBlock[1]) / 1000); }
                         catch (Exception) { }
                         break;
 
                     case "bmv_p":
-                        try { Form1.instance.Dataset.P_Res = Math.Round(double.Parse(SingleDataBlock[1])); }
+                        try { Form1.instance.Dataset.P_Res = Math.Round(double.Parse(SingleDataBlock[1]) / 10); }
                         catch (Exception) { }
                         break;
 

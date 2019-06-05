@@ -78,6 +78,11 @@ namespace Solar_DataReader
             solidGauge_MPPT2_U.Uses360Mode = false;
             solidGauge_MPPT2_U.From = 0;
             solidGauge_MPPT2_U.To = 60;
+
+            solidGaugePres.Uses360Mode = false;
+            solidGaugePres.From = 0;
+            solidGaugePres.To = 2000;
+            
             #endregion
 
             Timer = new Timer{Interval = 10};
@@ -98,13 +103,19 @@ namespace Solar_DataReader
                    
                     try
                     { 
-                        using (var writer = new StreamWriter(@"C:\Users\Administrator1\Documents\Data\data.txt"))
+                        using(FileStream fs = new FileStream(@"C:\Users\Jelte\Documents\data.txt", FileMode.Append, FileAccess.Write))
+                        using (var writer = new StreamWriter(fs))
                         using (var csvWriter = new CsvWriter(writer))
                         {
-                            csvWriter.WriteRecords(Records);
+                            csvWriter.WriteRecord(Dataset);
                         }
                     }
-                    catch (Exception ex) { MessageBox.Show("Error: Cannot acces data.txt \r\n" + ex.Message.ToString(), "ERROR"); return; }  
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: Cannot acces data.txt \r\n" + ex.Message.ToString(), "ERROR");
+                        checkBox2.Checked = false;
+                        return;
+                    }  
                 }
                
             }
@@ -158,6 +169,7 @@ namespace Solar_DataReader
             solidGauge_MPPT2_I.Value = Dataset.I_MPPT_2;
             solidGauge_MPPT2_U.Value = Dataset.U_MPPT_2;
             solidGauge_I_BAT.Value = Dataset.I_res;
+            solidGaugePres.Value = Dataset.P_Res;
 
             if (Dataset.GPS_fix)
                 pictureBox1.Image = Solar_DataReader.Properties.Resources.Trafficlight_green_icon;

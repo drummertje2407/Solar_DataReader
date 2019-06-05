@@ -35,7 +35,10 @@ namespace Solar_DataReader
         {
             get
             {
-                return P_Res - P_PV;
+                if (P_Res < 0)
+                     return P_Res + P_PV;
+                else
+                    return P_Res - P_PV;
             }
             set
             {

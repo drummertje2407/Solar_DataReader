@@ -33,6 +33,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeTokenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.solidGaugeP_solar = new LiveCharts.WinForms.SolidGauge();
             this.solidGaugeP_motor = new LiveCharts.WinForms.SolidGauge();
             this.solidGaugeSpeed = new LiveCharts.WinForms.SolidGauge();
@@ -58,7 +59,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.dataLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.solidGaugePres = new LiveCharts.WinForms.SolidGauge();
+            this.label11 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -112,6 +114,12 @@
             this.changeTokenToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.changeTokenToolStripMenuItem.Text = "Change Token";
             this.changeTokenToolStripMenuItem.Click += new System.EventHandler(this.changeTokenToolStripMenuItem_Click);
+            // 
+            // dataLocationToolStripMenuItem
+            // 
+            this.dataLocationToolStripMenuItem.Name = "dataLocationToolStripMenuItem";
+            this.dataLocationToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.dataLocationToolStripMenuItem.Text = "Data Location";
             // 
             // solidGaugeP_solar
             // 
@@ -352,11 +360,24 @@
             this.checkBox2.Text = "Savedata";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
-            // dataLocationToolStripMenuItem
+            // solidGaugePres
             // 
-            this.dataLocationToolStripMenuItem.Name = "dataLocationToolStripMenuItem";
-            this.dataLocationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.dataLocationToolStripMenuItem.Text = "Data Location";
+            this.solidGaugePres.Location = new System.Drawing.Point(155, 314);
+            this.solidGaugePres.Name = "solidGaugePres";
+            this.solidGaugePres.Size = new System.Drawing.Size(173, 111);
+            this.solidGaugePres.TabIndex = 6;
+            this.solidGaugePres.Text = "solidGauge4";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(211, 428);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(84, 22);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "P res (W)";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Form1
             // 
@@ -368,9 +389,11 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.solidGaugePres);
             this.Controls.Add(this.solidGaugeSOC);
             this.Controls.Add(this.solidGaugeSpeed);
             this.Controls.Add(this.Console_output);
@@ -423,6 +446,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ToolStripMenuItem dataLocationToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBox2;
+        private LiveCharts.WinForms.SolidGauge solidGaugePres;
+        private System.Windows.Forms.Label label11;
     }
 }
 
